@@ -1,0 +1,9 @@
+services:
+  backend:
+    build:
+      context: ../backend
+      target: dev-envs
+    stop_signal: SIGINT
+    ports: 
+      - '8000:8000'
+    volumes: ['./backend:/app']
