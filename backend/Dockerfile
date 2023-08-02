@@ -5,9 +5,9 @@ EXPOSE 8000
 
 ENV PYTHONUNBUFFERED=1
 
-WORKDIR app
+WORKDIR /app
 
-COPY * /app/
+COPY . /app
 
 RUN pip3 install -r requirements.txt
 

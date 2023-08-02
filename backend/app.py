@@ -3,19 +3,22 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from dotenv import load_dotenv
 import os
+import click
 
 load_dotenv()
 
 app = Flask(__name__)
-# print(os.getenv('APP_SETTINGS'))
-print(os.environ)
 app.config.from_object(os.getenv('APP_SETTINGS'))
-# print(app.config.from_object(os.getenv('APP_SETTINGS')))
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
-from models import *
-
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(256), unique=True)
+    first_name = db.Column(db.String(100))
+    last_name = db.Column(db.String(100))
+    is_active = db.Column(db.Boolean(True))
+    
 @app.route("/")
 def homepage():
     return "<p>Hello, World!</p>"
