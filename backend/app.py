@@ -1,6 +1,20 @@
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 app = Flask(__name__)
+# print(os.getenv('APP_SETTINGS'))
+print(os.environ)
+app.config.from_object(os.getenv('APP_SETTINGS'))
+# print(app.config.from_object(os.getenv('APP_SETTINGS')))
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
+
+from models import *
 
 @app.route("/")
 def homepage():
