@@ -4,3 +4,4 @@ node_modules/
 .env
 data
 .flaskenv
+**/__pycache__
