@@ -1,8 +1,8 @@
 from app import app
 
-@app.route("/")
+@app.route("/", methods=["GET"])
 def homepage():
-    return "<p>Hello, World!</p>"
+    return "Hello, World!"
 
 # @app.route("/login", methods=["POST"])
 # def login():
