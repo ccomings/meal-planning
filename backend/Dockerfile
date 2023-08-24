@@ -10,6 +10,7 @@ WORKDIR /app
 COPY . /app
 
 RUN pip3 install -r requirements.txt
+# RUN flask db upgrade
 
 ENTRYPOINT ["python3"]
 CMD ["meal_planning.py"]

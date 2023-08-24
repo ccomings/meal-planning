@@ -13,5 +13,6 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
 from app import models, routes
-
-app.run(host='0.0.0.0', port=8000, debug=True)
+print('name:', __name__)
+if __name__ == "app":
+    app.run(host='0.0.0.0', port=8000, debug=True)
